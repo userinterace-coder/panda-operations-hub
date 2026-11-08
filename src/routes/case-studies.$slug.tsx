@@ -31,7 +31,7 @@ function CaseStudyDetail() {
     <SiteShell>
       <Section>
         <Link to="/portfolio" className="mb-10 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"><ArrowLeft className="h-4 w-4" /> Work</Link>
-        {q.isPending ? <LoadingRows rows={6} /> : q.error ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : (
+        {q.isPending ? <LoadingRows rows={6} /> : q.isError ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : (
           <article>
             <p className="eyebrow">Case study{q.data.client_name ? ` · ${q.data.client_name}` : ""}</p>
             <h1 className="mt-4 max-w-4xl text-4xl font-semibold sm:text-6xl">{q.data.title}</h1>

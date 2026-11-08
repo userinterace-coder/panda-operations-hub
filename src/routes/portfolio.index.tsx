@@ -32,7 +32,7 @@ function PortfolioPage() {
     <SiteShell>
       <PageHero index="05" eyebrow="Work" title="Projects we're allowed to show" lead="Every project here has been approved for publication by the client and our content team." />
       <Section>
-        {work.isPending ? <LoadingRows /> : work.error ? <ErrorState error={work.error} onRetry={() => work.refetch()} /> : work.data.items.length === 0 ? (
+        {work.isPending ? <LoadingRows /> : work.isError ? <ErrorState error={work.error} onRetry={() => work.refetch()} /> : work.data.items.length === 0 ? (
           <EmptyState title="No projects published yet" />
         ) : (
           <>
@@ -43,7 +43,7 @@ function PortfolioPage() {
       </Section>
       <div className="border-t bg-muted/50">
         <Section eyebrow="Case studies" title="Challenge, approach, result">
-          {cases.isPending ? <LoadingRows rows={3} /> : cases.error ? <ErrorState error={cases.error} compact /> : cases.data.items.length === 0 ? (
+          {cases.isPending ? <LoadingRows rows={3} /> : cases.isError ? <ErrorState error={cases.error} compact /> : cases.data.items.length === 0 ? (
             <EmptyState title="No case studies published yet" />
           ) : (
             <div className="divide-y border-y">

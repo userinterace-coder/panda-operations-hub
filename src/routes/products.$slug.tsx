@@ -36,7 +36,7 @@ function ProductDetail() {
     <SiteShell>
       <Section>
         <Link to="/products" className="mb-10 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"><ArrowLeft className="h-4 w-4" /> Products</Link>
-        {q.isPending ? <LoadingRows rows={6} /> : q.error ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : (
+        {q.isPending ? <LoadingRows rows={6} /> : q.isError ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : (
           <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr]">
             <div>
               <p className="eyebrow">{q.data.category ?? "Product"}</p>

@@ -64,7 +64,7 @@ function ShopPage() {
             <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder="Search the shop" aria-label="Search the shop" />
           </form>
         </div>
-        {q.isPending ? <LoadingRows /> : q.error ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : q.data.items.length === 0 ? (
+        {q.isPending ? <LoadingRows /> : q.isError ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : q.data.items.length === 0 ? (
           <EmptyState title="No products found" />
         ) : (
           <>

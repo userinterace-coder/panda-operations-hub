@@ -38,7 +38,7 @@ function ProductsPage() {
           <FilterChip active={category === undefined} onClick={() => { setCategory(undefined); setPage(1); }}>All</FilterChip>
           {(cats.data ?? []).map((c) => <FilterChip key={c.id} active={category === c.id} onClick={() => { setCategory(c.id); setPage(1); }}>{c.name}</FilterChip>)}
         </div>
-        {q.isPending ? <LoadingRows /> : q.error ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : q.data.items.length === 0 ? (
+        {q.isPending ? <LoadingRows /> : q.isError ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : q.data.items.length === 0 ? (
           <EmptyState title="No products published yet" />
         ) : (
           <>

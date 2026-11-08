@@ -97,7 +97,7 @@ function FeaturedServices() {
   return (
     <div className="border-y bg-muted/50">
       <Section index="02" eyebrow="Featured services" title="Where most engagements start" aside={<Button asChild variant="outline"><Link to="/services">All services <ArrowRight /></Link></Button>}>
-        {q.isPending ? <LoadingRows rows={3} /> : q.error ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : q.data.items.length === 0 ? (
+        {q.isPending ? <LoadingRows rows={3} /> : q.isError ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : q.data.items.length === 0 ? (
           <EmptyState title="No featured services published yet">Featured services appear here when staff mark them as featured and published in the catalogue.</EmptyState>
         ) : (
           <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3">
@@ -136,7 +136,7 @@ function FeaturedWork() {
       <Section index="04" eyebrow="Selected work" title={<span className="text-inverse-foreground">Verified projects</span>}
         lead={<span className="text-inverse-muted">Only projects that have been approved for publication are shown.</span>}
         aside={<Button asChild variant="outline-inverse"><Link to="/portfolio">All work <ArrowRight /></Link></Button>}>
-        {q.isPending ? <LoadingRows rows={2} /> : q.error ? <ErrorState error={q.error} onRetry={() => q.refetch()} className="bg-inverse-subtle" /> : q.data.items.length === 0 ? (
+        {q.isPending ? <LoadingRows rows={2} /> : q.isError ? <ErrorState error={q.error} onRetry={() => q.refetch()} className="bg-inverse-subtle" /> : q.data.items.length === 0 ? (
           <p className="rounded-lg border border-dashed border-inverse-border p-8 text-sm text-inverse-muted">No portfolio projects have been published yet.</p>
         ) : (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 [&_a]:border-inverse-border">
@@ -170,7 +170,7 @@ function ProductsAndInsights() {
   return (
     <div className="border-t bg-muted/50">
       <Section index="06" eyebrow="Products" title="Software and equipment" aside={<Button asChild variant="outline"><Link to="/shop">Visit the shop <ArrowRight /></Link></Button>}>
-        {products.isPending ? <LoadingRows rows={2} /> : products.error ? <ErrorState error={products.error} onRetry={() => products.refetch()} /> : products.data.items.length === 0 ? (
+        {products.isPending ? <LoadingRows rows={2} /> : products.isError ? <ErrorState error={products.error} onRetry={() => products.refetch()} /> : products.data.items.length === 0 ? (
           <EmptyState title="No featured products yet">Products appear here once they are published in the catalogue.</EmptyState>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">{products.data.items.slice(0, 4).map((p) => <ProductCard key={p.id} product={p} />)}</div>
@@ -183,7 +183,7 @@ function ProductsAndInsights() {
             </div>
             <Link to="/insights" className="text-sm font-medium hover:text-brand-strong">All insights →</Link>
           </div>
-          {articles.isPending ? <LoadingRows rows={2} /> : articles.error ? <ErrorState error={articles.error} compact /> : articles.data.items.length === 0 ? (
+          {articles.isPending ? <LoadingRows rows={2} /> : articles.isError ? <ErrorState error={articles.error} compact /> : articles.data.items.length === 0 ? (
             <EmptyState title="No articles published yet" />
           ) : (
             <div className="grid gap-8 md:grid-cols-3">{articles.data.items.slice(0, 3).map((a) => <ArticleCard key={a.id} article={a} />)}</div>

@@ -14,7 +14,7 @@ import { safeHtml } from "@/lib/sanitize";
 export function CmsPageBody({ slug, draftTitle, draftNote }: { slug: string; draftTitle: string; draftNote: string }) {
   const q = useQuery(publicQueries.page(slug));
   if (q.isPending) return <LoadingRows rows={6} />;
-  if (q.error) {
+  if (q.isError) {
     const e = q.error instanceof ApiError ? q.error : null;
     if (e?.kind === "not_found" || e?.kind === "not_configured") {
       return (

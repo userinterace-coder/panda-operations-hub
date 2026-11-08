@@ -29,7 +29,7 @@ function SolutionsPage() {
     <SiteShell>
       <PageHero index="02" eyebrow="Solutions" title="Packaged solutions for common business needs" lead="Each solution bundles services into clear packages. Packages without an approved price are quoted on request." />
       <Section>
-        {q.isPending ? <LoadingRows /> : q.error ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : q.data.length === 0 ? (
+        {q.isPending ? <LoadingRows /> : q.isError ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : q.data.length === 0 ? (
           <EmptyState title="No solutions published yet" />
         ) : (
           <div className="space-y-20">

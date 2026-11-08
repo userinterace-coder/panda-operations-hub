@@ -30,7 +30,7 @@ function ServiceDetail() {
   const q = useQuery(publicQueries.service(slug));
   return (
     <SiteShell>
-      {q.isPending ? <div className="mx-auto max-w-7xl px-4 py-24"><LoadingRows rows={6} /></div> : q.error ? (
+      {q.isPending ? <div className="mx-auto max-w-7xl px-4 py-24"><LoadingRows rows={6} /></div> : q.isError ? (
         <div className="mx-auto max-w-3xl px-4 py-24"><ErrorState error={q.error} onRetry={() => q.refetch()} /></div>
       ) : (
         <>

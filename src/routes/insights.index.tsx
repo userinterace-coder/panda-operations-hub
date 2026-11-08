@@ -36,7 +36,7 @@ function InsightsPage() {
         </form>
       </PageHero>
       <Section>
-        {q.isPending ? <LoadingRows /> : q.error ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : q.data.items.length === 0 ? (
+        {q.isPending ? <LoadingRows /> : q.isError ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : q.data.items.length === 0 ? (
           <EmptyState title={term ? `No articles match “${term}”` : "No articles published yet"} />
         ) : (
           <>

@@ -32,7 +32,7 @@ function ArticleDetail() {
     <SiteShell>
       <Section className="max-w-3xl">
         <Link to="/insights" className="mb-10 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"><ArrowLeft className="h-4 w-4" /> Insights</Link>
-        {q.isPending ? <LoadingRows rows={8} /> : q.error ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : (
+        {q.isPending ? <LoadingRows rows={8} /> : q.isError ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : (
           <article>
             <p className="flex flex-wrap gap-3 font-mono text-xs text-muted-foreground">
               {q.data.category && <span className="text-brand-strong">{q.data.category}</span>}

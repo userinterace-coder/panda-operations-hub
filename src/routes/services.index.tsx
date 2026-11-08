@@ -47,7 +47,7 @@ function ServicesPage() {
             <Input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search services" className="pl-9" aria-label="Search services" />
           </form>
         </div>
-        {services.isPending ? <LoadingRows /> : services.error ? <ErrorState error={services.error} onRetry={() => services.refetch()} /> : services.data.items.length === 0 ? (
+        {services.isPending ? <LoadingRows /> : services.isError ? <ErrorState error={services.error} onRetry={() => services.refetch()} /> : services.data.items.length === 0 ? (
           <EmptyState title={term ? `No services match “${term}”` : "No services published yet"}>Services appear here once published by the catalogue team.</EmptyState>
         ) : (
           <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3">{services.data.items.map((s, i) => <ServiceCard key={s.id} service={s} index={i} />)}</div>
