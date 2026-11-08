@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, ArrowUpRight, Quote } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Cloud, Code2, GraduationCap, Headphones, Quote, Rocket, ShieldCheck, ShoppingCart } from "lucide-react";
 
-import heroImage from "@/assets/hero-geometry.jpg";
+import heroImage from "@/assets/panda-techs-hero.jpg";
 import { ArticleCard, PortfolioCard, ProductCard, ServiceCard } from "@/components/site/cards";
 import { Section, SiteShell } from "@/components/site/SiteShell";
 import { EmptyState, ErrorState, LoadingRows } from "@/components/states";
@@ -13,10 +13,10 @@ import { publicQueries } from "@/lib/api/public";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "PANDA TECH — Technology. Innovation. Possibilities." },
-      { name: "description", content: "Full-service technology company in Kenya: software & AI, IT infrastructure, cybersecurity, cloud, creative and digital services, and a technology shop." },
-      { property: "og:title", content: "PANDA TECH — Technology. Innovation. Possibilities." },
-      { property: "og:description", content: "Software, AI, infrastructure, security, creative and digital services — one accountable technology partner in Kenya." },
+      { title: "PANDATECHS ENTERPRISES — Building a Smarter Digital Future Together" },
+      { name: "description", content: "Cutting-edge software, AI solutions and IT services to help your organisation innovate, grow and lead in the digital era." },
+      { property: "og:title", content: "PANDATECHS ENTERPRISES — Building a Smarter Digital Future Together" },
+      { property: "og:description", content: "Software, AI, cloud, e-commerce, training and IT support from one accountable technology partner in Kenya." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -28,8 +28,9 @@ function Home() {
   return (
     <SiteShell headerTone="ink">
       <Hero />
-      <DivisionsBand />
+      <QuickServices />
       <FeaturedServices />
+      <DivisionsBand />
       <Capabilities />
       <FeaturedWork />
       <Principles />
@@ -43,30 +44,33 @@ function Home() {
 
 function Hero() {
   return (
-    <section className="surface-ink relative -mt-16 overflow-hidden pt-16">
-      <img src={heroImage} alt="" width={1600} height={1104} className="pointer-events-none absolute inset-y-0 right-0 h-full w-full object-cover object-right opacity-90 md:w-[78%]" />
-      <div className="absolute inset-0 bg-gradient-to-r from-inverse via-inverse/80 to-transparent" aria-hidden />
-      <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 sm:pb-28 sm:pt-28 lg:px-8">
-        <p className="animate-rise font-mono text-[11px] uppercase tracking-[0.16em] text-inverse-muted">
-          <span className="text-brand">●</span>&nbsp; Full-service technology company · Kenya
+    <section className="surface-ink relative -mt-[76px] overflow-hidden pt-[76px]">
+      <img src={heroImage} alt="A technology professional holding a tablet outside a modern office" width={1600} height={1008} fetchPriority="high" className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[62%_center] sm:object-center" />
+      <div className="absolute inset-0 bg-gradient-to-r from-inverse via-inverse/85 to-inverse/10" aria-hidden />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-inverse/70 to-transparent" aria-hidden />
+      <div className="relative mx-auto max-w-[1440px] px-4 pb-32 pt-16 sm:px-6 sm:pb-36 sm:pt-20 lg:px-8 lg:pb-32 lg:pt-24">
+        <p className="animate-rise font-display text-lg font-medium text-brand sm:text-xl [animation-delay:40ms]">
+          Technology. Innovation. Possibilities.
         </p>
-        <h1 className="mt-8 max-w-4xl animate-rise font-display text-5xl font-semibold leading-[0.98] tracking-tight sm:text-7xl lg:text-8xl [animation-delay:60ms]">
-          Technology.<br />Innovation.<br />Possibilities<span className="text-brand">.</span>
+        <h1 className="mt-5 max-w-5xl animate-rise font-display text-[2.85rem] font-bold leading-[1.04] tracking-[-0.045em] text-inverse-foreground sm:text-6xl lg:text-[4.35rem] [animation-delay:90ms]">
+          Building a Smarter<br /><span className="text-brand">Digital Future Together</span>
         </h1>
-        <p className="mt-8 max-w-xl animate-rise text-lg text-inverse-muted [animation-delay:120ms]">
-          We design, build, secure and run the technology businesses depend on — from custom software and AI to networks, cloud and brand.
+        <p className="mt-6 max-w-xl animate-rise text-lg leading-relaxed text-inverse-foreground/90 [animation-delay:140ms]">
+          Cutting-edge software, AI solutions and IT services to help you innovate, grow and lead in the digital era.
         </p>
-        <div className="mt-10 flex animate-rise flex-wrap gap-3 [animation-delay:180ms]">
-          <Button asChild variant="brand" size="lg"><Link to="/contact">Start a project <ArrowUpRight /></Link></Button>
-          <Button asChild variant="outline-inverse" size="lg"><Link to="/services">Explore services</Link></Button>
+        <div className="mt-8 flex animate-rise flex-wrap gap-4 [animation-delay:190ms]">
+          <Button asChild variant="brand" size="lg" className="h-12 rounded-full px-7"><Link to="/services">Explore Our Services <ArrowRight /></Link></Button>
+          <Button asChild variant="outline-inverse" size="lg" className="h-12 rounded-full border-inverse-foreground/70 px-7"><Link to="/about">Our Company <ArrowUpRight /></Link></Button>
         </div>
-      </div>
-      <div className="relative border-t border-inverse-border">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-inverse-border px-4 sm:px-6 md:grid-cols-4 lg:px-8">
-          {["Software & AI", "IT & Security", "Creative & Digital", "Products & Shop"].map((t, i) => (
-            <div key={t} className="py-5 pl-4 first:pl-0">
-              <p className="font-mono text-[11px] text-inverse-muted">{String(i + 1).padStart(2, "0")}</p>
-              <p className="mt-1 font-display text-sm font-medium sm:text-base">{t}</p>
+        <div className="mt-12 flex animate-rise flex-wrap gap-x-10 gap-y-5 [animation-delay:240ms]">
+          {[
+            { icon: Rocket, title: "Innovative", subtitle: "Solutions" },
+            { icon: ShieldCheck, title: "Trusted", subtitle: "Partner" },
+            { icon: Headphones, title: "24/7", subtitle: "Support" },
+          ].map(({ icon: Icon, title, subtitle }) => (
+            <div key={subtitle} className="flex items-center gap-3 border-l border-inverse-border pl-5 first:border-l-0 first:pl-0">
+              <Icon className="h-8 w-8 stroke-[1.5] text-brand" aria-hidden />
+              <p className="text-sm leading-snug text-inverse-foreground">{title}<br /><span className="text-inverse-muted">{subtitle}</span></p>
             </div>
           ))}
         </div>
@@ -75,9 +79,36 @@ function Hero() {
   );
 }
 
+const QUICK_SERVICES = [
+  { title: "Software & AI", description: "Custom solutions and smart automation.", icon: Code2, iconClass: "text-info" },
+  { title: "Cloud & Hosting", description: "Secure, scalable and reliable cloud services.", icon: Cloud, iconClass: "text-success" },
+  { title: "E-Commerce", description: "Build and grow your online business.", icon: ShoppingCart, iconClass: "text-brand" },
+  { title: "Training", description: "Build skills for the digital economy.", icon: GraduationCap, iconClass: "text-primary" },
+  { title: "IT Support", description: "Expert support when you need it.", icon: Headphones, iconClass: "text-success" },
+] as const;
+
+function QuickServices() {
+  return (
+    <div className="relative z-10 mx-auto -mt-20 max-w-[1440px] px-4 sm:px-6 lg:px-8">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        {QUICK_SERVICES.map(({ title, description, icon: Icon, iconClass }) => (
+          <Link key={title} to="/services" className="group relative flex min-h-36 items-center gap-3 rounded-2xl border bg-card p-4 shadow-elevated transition-all duration-300 hover:-translate-y-1 hover:border-brand/40">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-muted"><Icon className={`h-7 w-7 ${iconClass}`} strokeWidth={1.7} aria-hidden /></span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-display text-[17px] font-semibold">{title}</span>
+              <span className="mt-1 block pr-3 text-sm leading-snug text-muted-foreground">{description}</span>
+            </span>
+            <ArrowRight className="absolute bottom-3 right-3 h-3.5 w-3.5 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-brand" aria-hidden />
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function DivisionsBand() {
   return (
-    <Section index="01" eyebrow="How we're organised" title="Five divisions. One accountable team." lead="Each division is a focused practice. Projects draw on whichever mix of skills the work needs.">
+    <Section index="02" eyebrow="How we're organised" title="Five divisions. One accountable team." lead="Each division is a focused practice. Projects draw on whichever mix of skills the work needs.">
       <div className="divide-y border-y">
         {DIVISIONS.map((d) => (
           <Link key={d.code} to="/services" className="group grid grid-cols-[3rem_1fr_auto] items-center gap-4 py-6 transition-colors hover:bg-muted/60 sm:grid-cols-[5rem_1.2fr_2fr_auto] sm:px-2">
@@ -95,12 +126,12 @@ function DivisionsBand() {
 function FeaturedServices() {
   const q = useQuery(publicQueries.services({ featured: true }));
   return (
-    <div className="border-y bg-muted/50">
-      <Section index="02" eyebrow="Featured services" title="Where most engagements start" aside={<Button asChild variant="outline"><Link to="/services">All services <ArrowRight /></Link></Button>}>
+    <div className="bg-background pt-6">
+      <Section index="01" eyebrow="Our Comprehensive Solutions" title="End-to-End Technology for Your Success" lead="From strategy to support, we provide complete technology solutions tailored to your needs." aside={<Button asChild className="rounded-full"><Link to="/services">View All Services <ArrowRight /></Link></Button>}>
         {q.isPending ? <LoadingRows rows={3} /> : q.isError ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : q.data.items.length === 0 ? (
           <EmptyState title="No featured services published yet">Featured services appear here when staff mark them as featured and published in the catalogue.</EmptyState>
         ) : (
-          <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 [&_a]:rounded-2xl">
             {q.data.items.slice(0, 6).map((s, i) => <ServiceCard key={s.id} service={s} index={i} />)}
           </div>
         )}

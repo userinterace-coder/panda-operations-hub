@@ -84,12 +84,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "PANDA TECH — Technology. Innovation. Possibilities." },
-      { name: "description", content: "PANDA TECH is a full-service technology company in Kenya: software, AI, IT infrastructure, cybersecurity, cloud, creative and digital services." },
-      { name: "author", content: "PANDA TECH" },
-      { name: "theme-color", content: "#111111" },
-      { property: "og:site_name", content: "PANDA TECH" },
-      { property: "og:title", content: "PANDA TECH — Technology. Innovation. Possibilities." },
+      { title: "PANDATECHS ENTERPRISES — Technology. Innovation. Possibilities." },
+      { name: "description", content: "PANDATECHS ENTERPRISES is a full-service technology company in Kenya: software, AI, IT infrastructure, cybersecurity, cloud, creative and digital services." },
+      { name: "author", content: "PANDATECHS ENTERPRISES" },
+      { name: "theme-color", content: "#071a36" },
+      { property: "og:site_name", content: "PANDATECHS ENTERPRISES" },
+      { property: "og:title", content: "PANDATECHS ENTERPRISES — Technology. Innovation. Possibilities." },
       { property: "og:description", content: "Full-service technology company serving Kenya." },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "en_KE" },
@@ -106,7 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
     scripts: [
       {
@@ -114,7 +114,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "PANDA TECH",
+          name: "PANDATECHS ENTERPRISES",
           slogan: "Technology. Innovation. Possibilities.",
           areaServed: "KE",
         }),

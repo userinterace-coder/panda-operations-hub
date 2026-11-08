@@ -9,9 +9,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * PANDA TECH design system — "editorial engineering".
- * Ink on paper, hairline structure, restrained signal-orange.
- * Brand palette: Black #111111 · Orange #FF6B2C · Charcoal #242424 · Light grey #F3F3F3 · Slate #777777 · White.
+ * PANDATECHS ENTERPRISES design system — optimistic technology.
+ * Deep navy surfaces, electric-blue atmosphere and warm orange calls to action.
  * Every colour used by components is a semantic token below. Never hardcode colours in components.
  */
 
@@ -93,39 +92,39 @@
 :root {
   --radius: 0.375rem;
 
-  /* Paper & ink */
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.178 0 0);
+  /* Clean white surfaces & deep-navy type */
+  --background: oklch(0.995 0.003 247);
+  --foreground: oklch(0.21 0.045 260);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.178 0 0);
+  --card-foreground: oklch(0.21 0.045 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.178 0 0);
-  --primary: oklch(0.178 0 0);
+  --popover-foreground: oklch(0.21 0.045 260);
+  --primary: oklch(0.24 0.065 260);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.964 0 0);
-  --secondary-foreground: oklch(0.178 0 0);
-  --muted: oklch(0.964 0 0);
-  --muted-foreground: oklch(0.5 0 0);
-  --accent: oklch(0.964 0 0);
-  --accent-foreground: oklch(0.178 0 0);
+  --secondary: oklch(0.965 0.015 250);
+  --secondary-foreground: oklch(0.24 0.065 260);
+  --muted: oklch(0.97 0.01 250);
+  --muted-foreground: oklch(0.5 0.035 255);
+  --accent: oklch(0.94 0.025 250);
+  --accent-foreground: oklch(0.21 0.045 260);
   --destructive: oklch(0.56 0.2 27);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.91 0 0);
-  --input: oklch(0.88 0 0);
+  --border: oklch(0.9 0.015 250);
+  --input: oklch(0.88 0.02 250);
   --ring: oklch(0.704 0.195 40.9);
 
-  /* Signal orange — use sparingly */
-  --brand: oklch(0.704 0.195 40.9);
-  --brand-strong: oklch(0.6 0.18 39.9);
-  --brand-foreground: oklch(0.178 0 0);
-  --brand-soft: oklch(0.967 0.018 48.5);
+  /* Warm orange calls to action */
+  --brand: oklch(0.72 0.19 47);
+  --brand-strong: oklch(0.62 0.18 42);
+  --brand-foreground: oklch(1 0 0);
+  --brand-soft: oklch(0.967 0.025 55);
 
-  /* Inverse (black) surfaces */
-  --inverse: oklch(0.178 0 0);
-  --inverse-foreground: oklch(0.985 0 0);
-  --inverse-muted: oklch(0.72 0 0);
-  --inverse-subtle: oklch(0.26 0 0);
-  --inverse-border: oklch(0.32 0 0);
+  /* Navy inverse surfaces */
+  --inverse: oklch(0.22 0.055 262);
+  --inverse-foreground: oklch(0.985 0.005 250);
+  --inverse-muted: oklch(0.78 0.035 255);
+  --inverse-subtle: oklch(0.29 0.06 260);
+  --inverse-border: oklch(0.36 0.06 258);
 
   /* Status */
   --success: oklch(0.52 0.12 155);
@@ -136,18 +135,18 @@
   --info-soft: oklch(0.96 0.02 245);
   --danger-soft: oklch(0.96 0.025 27);
 
-  --chart-1: oklch(0.704 0.195 40.9);
-  --chart-2: oklch(0.178 0 0);
+  --chart-1: oklch(0.72 0.19 47);
+  --chart-2: oklch(0.24 0.065 260);
   --chart-3: oklch(0.569 0 0);
   --chart-4: oklch(0.82 0.1 50);
   --chart-5: oklch(0.42 0 0);
 
-  /* Workspace sidebar is an ink rail */
-  --sidebar: oklch(0.178 0 0);
-  --sidebar-foreground: oklch(0.82 0 0);
-  --sidebar-primary: oklch(0.704 0.195 40.9);
-  --sidebar-primary-foreground: oklch(0.178 0 0);
-  --sidebar-accent: oklch(0.26 0 0);
+  /* Workspace sidebar is a navy rail */
+  --sidebar: oklch(0.22 0.055 262);
+  --sidebar-foreground: oklch(0.82 0.025 255);
+  --sidebar-primary: oklch(0.72 0.19 47);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.29 0.06 260);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(0.28 0 0);
   --sidebar-ring: oklch(0.704 0.195 40.9);
@@ -155,10 +154,10 @@
   --shadow-hairline-value: 0 0 0 1px oklch(0.178 0 0 / 0.06);
   --shadow-soft-value: 0 1px 2px oklch(0.178 0 0 / 0.05), 0 8px 24px -12px oklch(0.178 0 0 / 0.12);
   --shadow-elevated-value: 0 2px 4px oklch(0.178 0 0 / 0.04), 0 24px 48px -20px oklch(0.178 0 0 / 0.28);
-  --shadow-brand-value: 0 12px 32px -12px oklch(0.704 0.195 40.9 / 0.55);
+  --shadow-brand-value: 0 12px 32px -12px oklch(0.72 0.19 47 / 0.5);
 
-  --gradient-ink: linear-gradient(180deg, oklch(0.2 0 0), oklch(0.15 0 0));
-  --gradient-signal: linear-gradient(90deg, oklch(0.704 0.195 40.9), oklch(0.76 0.16 55));
+  --gradient-ink: linear-gradient(135deg, oklch(0.2 0.06 262), oklch(0.28 0.09 255));
+  --gradient-signal: linear-gradient(90deg, oklch(0.68 0.19 42), oklch(0.78 0.17 60));
 }
 
 @layer base {

@@ -18,7 +18,7 @@ export function SiteFooter() {
           <div className="space-y-5">
             <Wordmark inverse className="text-2xl" />
             <p className="max-w-sm font-display text-2xl leading-snug text-inverse-foreground">Technology. Innovation. Possibilities.</p>
-            <p className="max-w-sm text-sm text-inverse-muted">A full-service technology company serving Kenya — software, AI, infrastructure, security, creative and digital services.</p>
+            <p className="max-w-sm text-sm text-inverse-muted">PANDATECHS ENTERPRISES is a full-service technology company serving Kenya — software, AI, infrastructure, security, creative and digital services.</p>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
             {COLUMNS.map((c) => (
@@ -36,7 +36,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="mt-16 flex flex-col gap-3 border-t border-inverse-border pt-6 text-xs text-inverse-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} PANDA TECH. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} PANDATECHS ENTERPRISES. All rights reserved.</p>
           <p className="font-mono">Nairobi · Africa/Nairobi · KES</p>
         </div>
       </div>

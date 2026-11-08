@@ -69,12 +69,12 @@ export function NotConnected({ className, compact }: { className?: string; compa
   if (compact)
     return (
       <p className={cn("inline-flex items-center gap-2 rounded-md border border-dashed px-3 py-2 font-mono text-xs text-muted-foreground", className)}>
-        <PlugZap className="h-3.5 w-3.5 text-brand-strong" /> Live content loads once the PANDA TECH backend is connected.
+        <PlugZap className="h-3.5 w-3.5 text-brand-strong" /> Live content loads once the PANDATECHS backend is connected.
       </p>
     );
   return (
     <Frame icon={<PlugZap className="h-4 w-4" />} title="Backend not connected" tone="brand" className={className}>
-      This section reads live data from the PANDA TECH API. It will appear automatically once the API address is configured and the backend is running.
+      This section reads live data from the PANDATECHS API. It will appear automatically once the API address is configured and the backend is running.
     </Frame>
   );
 }
