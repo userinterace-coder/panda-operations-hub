@@ -1,10 +1,16 @@
 import { QueryClient } from "@tanstack/react-query";
 import { createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
+import { shouldRetry } from "./lib/api/client";
 
 export const getRouter = () => {
   // One client per request: a module-level QueryClient leaks cached data between SSR requests.
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: { retry: shouldRetry, refetchOnWindowFocus: false, staleTime: 30_000 },
+      mutations: { retry: false },
+    },
+  });
 
   const router = createRouter({
     routeTree,
