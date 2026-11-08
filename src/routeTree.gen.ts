@@ -24,6 +24,7 @@ import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SolutionsRouteImport } from './routes/solutions'
 import { Route as SupportRouteImport } from './routes/support'
+import { Route as TeamRouteImport } from './routes/team'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as CaseStudiesIndexRouteImport } from './routes/case-studies.index'
 import { Route as CaseStudiesSlugRouteImport } from './routes/case-studies.$slug'
@@ -111,6 +112,11 @@ const SupportRoute = SupportRouteImport.update({
   path: '/support',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -183,6 +189,7 @@ export interface FileRoutesByFullPath {
   '/shop': typeof ShopRoute
   '/solutions': typeof SolutionsRoute
   '/support': typeof SupportRoute
+  '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/insights/$slug': typeof InsightsSlugRoute
@@ -211,6 +218,7 @@ export interface FileRoutesByTo {
   '/shop': typeof ShopRoute
   '/solutions': typeof SolutionsRoute
   '/support': typeof SupportRoute
+  '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/insights/$slug': typeof InsightsSlugRoute
@@ -240,6 +248,7 @@ export interface FileRoutesById {
   '/shop': typeof ShopRoute
   '/solutions': typeof SolutionsRoute
   '/support': typeof SupportRoute
+  '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/case-studies/$slug': typeof CaseStudiesSlugRoute
   '/insights/$slug': typeof InsightsSlugRoute
@@ -270,6 +279,7 @@ export interface FileRouteTypes {
     | '/shop'
     | '/solutions'
     | '/support'
+    | '/team'
     | '/terms'
     | '/case-studies/$slug'
     | '/insights/$slug'
@@ -298,6 +308,7 @@ export interface FileRouteTypes {
     | '/shop'
     | '/solutions'
     | '/support'
+    | '/team'
     | '/terms'
     | '/case-studies/$slug'
     | '/insights/$slug'
@@ -326,6 +337,7 @@ export interface FileRouteTypes {
     | '/shop'
     | '/solutions'
     | '/support'
+    | '/team'
     | '/terms'
     | '/case-studies/$slug'
     | '/insights/$slug'
@@ -355,6 +367,7 @@ export interface RootRouteChildren {
   ShopRoute: typeof ShopRoute
   SolutionsRoute: typeof SolutionsRoute
   SupportRoute: typeof SupportRoute
+  TeamRoute: typeof TeamRoute
   TermsRoute: typeof TermsRoute
   CaseStudiesSlugRoute: typeof CaseStudiesSlugRoute
   InsightsSlugRoute: typeof InsightsSlugRoute
@@ -475,6 +488,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SupportRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -571,6 +591,7 @@ const rootRouteChildren: RootRouteChildren = {
   ShopRoute: ShopRoute,
   SolutionsRoute: SolutionsRoute,
   SupportRoute: SupportRoute,
+  TeamRoute: TeamRoute,
   TermsRoute: TermsRoute,
   CaseStudiesSlugRoute: CaseStudiesSlugRoute,
   InsightsSlugRoute: InsightsSlugRoute,

@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 export const SITE_NAV = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
+  { to: "/team", label: "Team" },
   { to: "/services", label: "Services" },
   { to: "/solutions", label: "Solutions" },
   { to: "/products", label: "Products" },

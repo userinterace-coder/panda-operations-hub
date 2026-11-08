@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Wordmark } from "@/components/brand/Wordmark";
 
 const COLUMNS = [
-  { title: "Company", links: [{ to: "/about", label: "About" }, { to: "/portfolio", label: "Work" }, { to: "/case-studies", label: "Case studies" }, { to: "/insights", label: "Insights" }, { to: "/developers", label: "Developers" }] },
+  { title: "Company", links: [{ to: "/about", label: "About" }, { to: "/team", label: "Team" }, { to: "/portfolio", label: "Work" }, { to: "/case-studies", label: "Case studies" }, { to: "/insights", label: "Insights" }, { to: "/developers", label: "Developers" }] },
   { title: "Offer", links: [{ to: "/services", label: "Services" }, { to: "/solutions", label: "Solutions" }, { to: "/products", label: "Products" }, { to: "/shop", label: "Technology shop" }] },
   { title: "Help", links: [{ to: "/support", label: "Support" }, { to: "/faqs", label: "FAQs" }, { to: "/contact", label: "Contact" }, { to: "/locations", label: "Service areas" }] },
   { title: "Legal", links: [{ to: "/privacy", label: "Privacy policy" }, { to: "/terms", label: "Terms & conditions" }] },

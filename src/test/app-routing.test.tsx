@@ -39,6 +39,16 @@ const ORIGINAL_PUBLIC_PATHS = [
   "/reset-password",
 ] as const;
 
+describe("Team page", () => {
+  it("matches /team to a real page", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+
+    const matches = router.matchRoutes("/team");
+
+    expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
+  });
+});
+
 describe("Original public pages", () => {
   it.each(ORIGINAL_PUBLIC_PATHS)("keeps %s matched to a real page", (path) => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });

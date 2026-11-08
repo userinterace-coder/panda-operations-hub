@@ -5,6 +5,7 @@
 - [x] Sign in, register, sign out, basic workspace page
 - [x] Transform homepage to the supplied navy/blue/orange reference and install the real PANDATECHS logo
 - [x] Restore visible Developers navigation, keep every original page accessible, and keep the hero subject clear of overlays
+- [x] Add a Team page for the three co-founders and the full PANDATECHS capability map
 - [ ] Role-based workspace areas (admin, developer, customer, operations, finance, support, commerce)
 - [ ] Approval/financial controls UI
 - [ ] Password reset — blocked: backend endpoint missing (G-11)
