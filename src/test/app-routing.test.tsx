@@ -15,3 +15,36 @@ describe("App routing", () => {
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
 });
+
+const ORIGINAL_PUBLIC_PATHS = [
+  "/",
+  "/about",
+  "/services",
+  "/solutions",
+  "/products",
+  "/shop",
+  "/portfolio",
+  "/case-studies",
+  "/insights",
+  "/developers",
+  "/contact",
+  "/support",
+  "/faqs",
+  "/locations",
+  "/privacy",
+  "/terms",
+  "/login",
+  "/register",
+  "/forgot-password",
+  "/reset-password",
+] as const;
+
+describe("Original public pages", () => {
+  it.each(ORIGINAL_PUBLIC_PATHS)("keeps %s matched to a real page", (path) => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+
+    const matches = router.matchRoutes(path);
+
+    expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
+  });
+});

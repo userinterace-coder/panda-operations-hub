@@ -44,8 +44,8 @@ function Home() {
 
 function Hero() {
   return (
-    <section className="surface-ink relative -mt-[76px] overflow-hidden pt-[76px]">
-      <img src={heroImage} alt="A technology professional holding a tablet outside a modern office" width={1600} height={1008} fetchPriority="high" className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[62%_center] sm:object-center" />
+    <section className="surface-ink relative overflow-hidden">
+      <img src={heroImage} alt="A technology professional holding a tablet outside a modern office" width={1600} height={1008} fetchPriority="high" className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[62%_top] sm:object-[center_top]" />
       <div className="absolute inset-0 bg-gradient-to-r from-inverse via-inverse/85 to-inverse/10" aria-hidden />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-inverse/70 to-transparent" aria-hidden />
       <div className="relative mx-auto max-w-[1440px] px-4 pb-32 pt-16 sm:px-6 sm:pb-36 sm:pt-20 lg:px-8 lg:pb-32 lg:pt-24">

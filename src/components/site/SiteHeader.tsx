@@ -17,6 +17,7 @@ export const SITE_NAV = [
   { to: "/products", label: "Products" },
   { to: "/shop", label: "Shop" },
   { to: "/portfolio", label: "Portfolio" },
+  { to: "/developers", label: "Developers" },
   { to: "/insights", label: "Insights" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -36,7 +37,7 @@ export function SiteHeader({ tone = "light" }: { tone?: "light" | "ink" }) {
         </Link>
         <nav className="mx-auto hidden items-center gap-0.5 xl:flex" aria-label="Main">
           {SITE_NAV.map((n) => (
-            <Link key={n.to} to={n.to} activeOptions={n.to === "/" ? { exact: true } : undefined} className={cn("relative rounded-md px-2.5 py-2 text-[13px] font-medium transition-colors", ink ? "text-inverse-muted hover:text-inverse-foreground" : "text-muted-foreground hover:text-foreground")}
+            <Link key={n.to} to={n.to} activeOptions={n.to === "/" ? { exact: true } : undefined} className={cn("relative rounded-md px-2 py-2 text-xs font-medium transition-colors 2xl:px-2.5 2xl:text-[13px]", ink ? "text-inverse-muted hover:text-inverse-foreground" : "text-muted-foreground hover:text-foreground")}
               activeProps={{ className: ink ? "text-brand after:absolute after:inset-x-2.5 after:-bottom-[18px] after:h-0.5 after:bg-brand" : "text-brand-strong font-semibold" }}>
               {n.label}
             </Link>
@@ -67,7 +68,7 @@ export function SiteHeader({ tone = "light" }: { tone?: "light" | "ink" }) {
                 <SheetTitle><Wordmark /></SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col p-3" aria-label="Mobile">
-                {[...SITE_NAV, { to: "/developers", label: "Developers" }, { to: "/support", label: "Support" }].map((n, i) => (
+                {[...SITE_NAV, { to: "/support", label: "Support" }].map((n, i) => (
                   <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="flex items-baseline gap-4 rounded-md px-3 py-3 font-display text-lg font-medium hover:bg-muted">
                     <span className="font-mono text-xs text-brand-strong">{String(i + 1).padStart(2, "0")}</span>
                     {n.label}
