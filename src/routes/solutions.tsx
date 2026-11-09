@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Check } from "lucide-react";
 
+import { AppShowcaseGrid } from "@/components/site/AppShowcase";
 import { PriceTag } from "@/components/site/cards";
 import { PageHero, Section, SiteShell } from "@/components/site/SiteShell";
 import { EmptyState, ErrorState, LoadingRows } from "@/components/states";
@@ -28,6 +29,11 @@ function SolutionsPage() {
   return (
     <SiteShell>
       <PageHero index="02" eyebrow="Solutions" title="Packaged solutions for common business needs" lead="Each solution bundles services into clear packages. Packages without an approved price are quoted on request." />
+      <div className="surface-ink">
+        <Section eyebrow="Ready-to-launch products" title={<span className="text-inverse-foreground">Wallets, POS, dashboards and online stores</span>} lead={<span className="text-inverse-muted">Pick a starting point and we tailor it to your brand, payments and workflow.</span>}>
+          <AppShowcaseGrid />
+        </Section>
+      </div>
       <Section>
         {q.isPending ? <LoadingRows /> : q.isError ? <ErrorState error={q.error} onRetry={() => q.refetch()} /> : q.data.length === 0 ? (
           <EmptyState title="No solutions published yet" />

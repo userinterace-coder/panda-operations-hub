@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Search } from "lucide-react";
 
+import { AppShowcaseStrip } from "@/components/site/AppShowcase";
 import { ServiceCard } from "@/components/site/cards";
 import { PageHero, Section, SiteShell } from "@/components/site/SiteShell";
 import { EmptyState, ErrorState, LoadingRows } from "@/components/states";
@@ -35,7 +36,9 @@ function ServicesPage() {
 
   return (
     <SiteShell>
-      <PageHero index="01" eyebrow="Services" title="Services across every layer of your technology" lead="Browse published services by division. Every engagement is scoped and quoted against your real requirements." />
+      <PageHero index="01" eyebrow="Services" title="Services across every layer of your technology" lead="Browse published services by division. Every engagement is scoped and quoted against your real requirements.">
+        <AppShowcaseStrip />
+      </PageHero>
       <Section>
         <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-wrap gap-2" role="tablist" aria-label="Divisions">

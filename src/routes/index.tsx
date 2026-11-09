@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight, CheckCircle2, Cloud, Code2, CreditCard, Gradu
 
 import heroImage from "@/assets/panda-techs-hero.jpg";
 import paymentIntegrationImage from "@/assets/payment-integration.jpg";
+import { AppShowcaseGrid } from "@/components/site/AppShowcase";
 import { ArticleCard, PortfolioCard, ProductCard, ServiceCard } from "@/components/site/cards";
 import { Section, SiteShell } from "@/components/site/SiteShell";
 import { TestimonialShowcase } from "@/components/site/TestimonialShowcase";
@@ -35,6 +36,7 @@ function Home() {
       <DivisionsBand />
       <Capabilities />
       <PaymentIntegration />
+      <AppsWeBuild />
       <FeaturedWork />
       <Principles />
       <ProductsAndInsights />
@@ -204,11 +206,27 @@ function PaymentIntegration() {
   );
 }
 
+function AppsWeBuild() {
+  return (
+    <div className="surface-ink relative overflow-hidden border-b border-inverse-border">
+      <div className="absolute -left-40 top-20 h-96 w-96 rounded-full bg-info/20 blur-3xl" aria-hidden />
+      <div className="absolute -right-32 bottom-10 h-80 w-80 rounded-full bg-brand/15 blur-3xl" aria-hidden />
+      <Section index="05" eyebrow="Apps we build"
+        title={<span className="text-inverse-foreground">Wallets, POS and apps that <span className="text-brand">move your business</span></span>}
+        lead={<span className="text-inverse-muted">From the shop counter to your customer's pocket — we design, build and support the digital products Kenyan businesses run on.</span>}
+        aside={<Button asChild variant="brand" className="rounded-full"><Link to="/contact">Start your app <ArrowRight /></Link></Button>}
+        className="relative">
+        <AppShowcaseGrid />
+      </Section>
+    </div>
+  );
+}
+
 function FeaturedWork() {
   const q = useQuery(publicQueries.portfolios({ featured: true }));
   return (
     <div className="surface-ink">
-      <Section index="05" eyebrow="Selected work" title={<span className="text-inverse-foreground">Verified projects</span>}
+      <Section index="06" eyebrow="Selected work" title={<span className="text-inverse-foreground">Verified projects</span>}
         lead={<span className="text-inverse-muted">Only projects that have been approved for publication are shown.</span>}
         aside={<Button asChild variant="outline-inverse"><Link to="/portfolio">All work <ArrowRight /></Link></Button>}>
         {q.isPending ? <LoadingRows rows={2} /> : q.isError ? <ErrorState error={q.error} onRetry={() => q.refetch()} className="bg-inverse-subtle" /> : q.data.items.length === 0 ? (
@@ -225,7 +243,7 @@ function FeaturedWork() {
 
 function Principles() {
   return (
-    <Section index="06" eyebrow="Why PANDATECHS" title="Built on explicit, honest process">
+    <Section index="07" eyebrow="Why PANDATECHS" title="Built on explicit, honest process">
       <div className="grid gap-px border bg-border sm:grid-cols-2 lg:grid-cols-4">
         {PRINCIPLES.map((p, i) => (
           <div key={p.title} className="bg-background p-6 sm:p-8">
@@ -244,7 +262,7 @@ function ProductsAndInsights() {
   const articles = useQuery(publicQueries.articles({}));
   return (
     <div className="border-t bg-muted/50">
-      <Section index="07" eyebrow="Products" title="Software and equipment" aside={<Button asChild variant="outline"><Link to="/shop">Visit the shop <ArrowRight /></Link></Button>}>
+      <Section index="08" eyebrow="Products" title="Software and equipment" aside={<Button asChild variant="outline"><Link to="/shop">Visit the shop <ArrowRight /></Link></Button>}>
         {products.isPending ? <LoadingRows rows={2} /> : products.isError ? <ErrorState error={products.error} onRetry={() => products.refetch()} /> : products.data.items.length === 0 ? (
           <EmptyState title="No featured products yet">Products appear here once they are published in the catalogue.</EmptyState>
         ) : (
@@ -253,7 +271,7 @@ function ProductsAndInsights() {
         <div className="mt-20">
           <div className="mb-8 flex items-end justify-between gap-4">
             <div>
-              <p className="eyebrow"><span className="text-brand-strong">08 — </span>Insights</p>
+              <p className="eyebrow"><span className="text-brand-strong">09 — </span>Insights</p>
               <h2 className="mt-4 text-3xl font-semibold">Latest thinking</h2>
             </div>
             <Link to="/insights" className="text-sm font-medium hover:text-brand-strong">All insights →</Link>
@@ -276,7 +294,7 @@ function DeveloperBand() {
         <div className="grid-lines absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_right,black,transparent_70%)]" aria-hidden />
         <div className="relative grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-end">
           <div>
-            <p className="eyebrow-brand">09 — Developer network</p>
+            <p className="eyebrow-brand">10 — Developer network</p>
             <h2 className="mt-4 max-w-2xl text-3xl font-semibold sm:text-5xl">Engineers who pass review, not just sign-up.</h2>
             <p className="mt-5 max-w-xl text-muted-foreground">Developers and agencies apply, are reviewed and verified, and only then join project teams. Membership is never a promise of jobs or income.</p>
           </div>

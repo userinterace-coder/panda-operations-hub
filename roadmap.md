@@ -9,6 +9,7 @@
 - [x] Add a Partner Hub with a dashboard-style preview and navigation
 - [x] Rename Steve to Steve Mwangi and add payment-integration artwork
 - [x] Add an eye-catching ten-card Kenyan testimonial design preview, clearly labelled as sample content
+- [x] Add wallet, POS, dashboard and e-commerce app artwork to Home, Services and Solutions
 - [ ] Role-based workspace areas (admin, developer, customer, operations, finance, support, commerce)
 - [ ] Approval/financial controls UI
 - [ ] Password reset — blocked: backend endpoint missing (G-11)
