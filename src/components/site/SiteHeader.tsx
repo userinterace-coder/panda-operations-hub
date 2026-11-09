@@ -19,6 +19,7 @@ export const SITE_NAV = [
   { to: "/shop", label: "Shop" },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/developers", label: "Developers" },
+  { to: "/partners", label: "Partners" },
   { to: "/insights", label: "Insights" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -45,7 +46,7 @@ export function SiteHeader({ tone = "light" }: { tone?: "light" | "ink" }) {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-2 xl:ml-0">
-          <Link to="/insights" className={cn("hidden h-10 w-10 items-center justify-center rounded-full border transition-colors md:inline-flex", ink ? "border-inverse-border text-inverse-foreground hover:bg-inverse-subtle" : "hover:bg-muted")} aria-label="Search insights">
+          <Link to="/insights" className={cn("hidden h-10 w-10 items-center justify-center rounded-full border transition-colors 2xl:inline-flex", ink ? "border-inverse-border text-inverse-foreground hover:bg-inverse-subtle" : "hover:bg-muted")} aria-label="Search insights">
             <Search className="h-4 w-4" />
           </Link>
           <Link to="/shop" search={{ cart: true }} className={cn("relative inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors", ink ? "hover:bg-inverse-subtle" : "hover:bg-muted")} aria-label={`Basket, ${count} items`}>
@@ -55,7 +56,7 @@ export function SiteHeader({ tone = "light" }: { tone?: "light" | "ink" }) {
           <Button asChild variant={ink ? "outline-inverse" : "outline"} size="sm" className="hidden h-10 rounded-full px-5 sm:inline-flex">
             <Link to={status === "authenticated" ? "/app" : "/login"}>{status === "authenticated" ? "Workspace" : "Login"}</Link>
           </Button>
-          <Button asChild variant="brand" size="sm" className="hidden h-10 rounded-full px-5 lg:inline-flex">
+          <Button asChild variant="brand" size="sm" className="hidden h-10 rounded-full px-5 2xl:inline-flex">
             <Link to="/contact">Get Started <ArrowRight /></Link>
           </Button>
           <Sheet open={open} onOpenChange={setOpen}>

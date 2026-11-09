@@ -18,6 +18,7 @@ import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
@@ -80,6 +81,11 @@ const LocationsRoute = LocationsRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -183,6 +189,7 @@ export interface FileRoutesByFullPath {
   '/forgot-password': typeof ForgotPasswordRoute
   '/locations': typeof LocationsRoute
   '/login': typeof LoginRoute
+  '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
@@ -212,6 +219,7 @@ export interface FileRoutesByTo {
   '/forgot-password': typeof ForgotPasswordRoute
   '/locations': typeof LocationsRoute
   '/login': typeof LoginRoute
+  '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
@@ -242,6 +250,7 @@ export interface FileRoutesById {
   '/forgot-password': typeof ForgotPasswordRoute
   '/locations': typeof LocationsRoute
   '/login': typeof LoginRoute
+  '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
@@ -273,6 +282,7 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/locations'
     | '/login'
+    | '/partners'
     | '/privacy'
     | '/register'
     | '/reset-password'
@@ -302,6 +312,7 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/locations'
     | '/login'
+    | '/partners'
     | '/privacy'
     | '/register'
     | '/reset-password'
@@ -331,6 +342,7 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/locations'
     | '/login'
+    | '/partners'
     | '/privacy'
     | '/register'
     | '/reset-password'
@@ -361,6 +373,7 @@ export interface RootRouteChildren {
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LocationsRoute: typeof LocationsRoute
   LoginRoute: typeof LoginRoute
+  PartnersRoute: typeof PartnersRoute
   PrivacyRoute: typeof PrivacyRoute
   RegisterRoute: typeof RegisterRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
@@ -444,6 +457,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -585,6 +605,7 @@ const rootRouteChildren: RootRouteChildren = {
   ForgotPasswordRoute: ForgotPasswordRoute,
   LocationsRoute: LocationsRoute,
   LoginRoute: LoginRoute,
+  PartnersRoute: PartnersRoute,
   PrivacyRoute: PrivacyRoute,
   RegisterRoute: RegisterRoute,
   ResetPasswordRoute: ResetPasswordRoute,

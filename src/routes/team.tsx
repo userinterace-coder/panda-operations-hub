@@ -16,7 +16,7 @@ const COFOUNDERS = [
     icon: Code2,
   },
   {
-    name: "Steve M Wangi",
+    name: "Steve Mwangi",
     initials: "SW",
     role: "Co-Founder & Full-Stack Engineer",
     bio: "End-to-end product engineering across frontend and backend development, APIs, payment integrations and scalable business systems built with Laravel, Python and modern web technologies.",
@@ -36,7 +36,7 @@ const COFOUNDERS = [
 export const Route = createFileRoute("/team")({
   head: () => pageHead(
     "Our Team",
-    "Meet PANDATECHS ENTERPRISES co-founders Laban Panda Khisa, Steve M Wangi and Vincent Wanjiru, and explore the team's full technology capabilities.",
+    "Meet PANDATECHS ENTERPRISES co-founders Laban Panda Khisa, Steve Mwangi and Vincent Wanjiru, and explore the team's full technology capabilities.",
   ),
   component: TeamPage,
 });

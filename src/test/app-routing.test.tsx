@@ -39,11 +39,11 @@ const ORIGINAL_PUBLIC_PATHS = [
   "/reset-password",
 ] as const;
 
-describe("Team page", () => {
-  it("matches /team to a real page", () => {
+describe.each(["/team", "/partners"])("Additional public page %s", (path) => {
+  it("matches a real page", () => {
     const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
 
-    const matches = router.matchRoutes("/team");
+    const matches = router.matchRoutes(path);
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });

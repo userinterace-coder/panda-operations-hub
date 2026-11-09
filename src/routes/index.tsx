@@ -1,10 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, ArrowUpRight, Cloud, Code2, GraduationCap, Headphones, Quote, Rocket, ShieldCheck, ShoppingCart } from "lucide-react";
+import { ArrowRight, ArrowUpRight, CheckCircle2, Cloud, Code2, CreditCard, GraduationCap, Headphones, Landmark, LockKeyhole, Rocket, ShieldCheck, ShoppingCart, Smartphone } from "lucide-react";
 
 import heroImage from "@/assets/panda-techs-hero.jpg";
+import paymentIntegrationImage from "@/assets/payment-integration.jpg";
 import { ArticleCard, PortfolioCard, ProductCard, ServiceCard } from "@/components/site/cards";
 import { Section, SiteShell } from "@/components/site/SiteShell";
+import { TestimonialShowcase } from "@/components/site/TestimonialShowcase";
 import { EmptyState, ErrorState, LoadingRows } from "@/components/states";
 import { Button } from "@/components/ui/button";
 import { CAPABILITIES, DIVISIONS, PRINCIPLES } from "@/content/catalogue";
@@ -32,11 +34,12 @@ function Home() {
       <FeaturedServices />
       <DivisionsBand />
       <Capabilities />
+      <PaymentIntegration />
       <FeaturedWork />
       <Principles />
       <ProductsAndInsights />
       <DeveloperBand />
-      <Testimonials />
+      <TestimonialShowcase />
       <ClosingCta />
     </SiteShell>
   );
@@ -160,11 +163,52 @@ function Capabilities() {
   );
 }
 
+const PAYMENT_FEATURES = [
+  { icon: Smartphone, title: "Mobile money", body: "Customer payment prompts, confirmation callbacks and mobile-first checkout flows." },
+  { icon: CreditCard, title: "Cards & bank payments", body: "Secure payment journeys designed around your customers and finance processes." },
+  { icon: Landmark, title: "APIs & webhooks", body: "Reliable connections between your platform, payment providers and business systems." },
+  { icon: LockKeyhole, title: "Reconciliation & control", body: "Clear transaction records, exception handling and reporting built into the workflow." },
+] as const;
+
+function PaymentIntegration() {
+  return (
+    <section className="relative overflow-hidden border-y bg-info-soft/35">
+      <div className="grid-lines absolute inset-0 opacity-50 [mask-image:linear-gradient(to_right,black,transparent_75%)]" aria-hidden />
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16 lg:px-8">
+        <div>
+          <p className="eyebrow"><span className="text-brand-strong">04 — </span>Payment integration</p>
+          <h2 className="mt-4 text-3xl font-semibold leading-tight sm:text-5xl">Every payment.<br /><span className="text-brand-strong">One seamless flow.</span></h2>
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">From the customer’s phone to your finance dashboard, we design secure payment journeys that feel effortless and stay accountable.</p>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {PAYMENT_FEATURES.map(({ icon: Icon, title, body }) => (
+              <div key={title} className="flex gap-3">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-card text-info shadow-soft"><Icon className="h-5 w-5" aria-hidden /></span>
+                <div><h3 className="font-display text-base font-semibold">{title}</h3><p className="mt-1 text-xs leading-5 text-muted-foreground">{body}</p></div>
+              </div>
+            ))}
+          </div>
+          <Button asChild variant="brand" size="lg" className="mt-9 rounded-full px-6"><Link to="/contact">Discuss your payment flow <ArrowRight /></Link></Button>
+        </div>
+        <div className="relative">
+          <div className="absolute -inset-5 rounded-[2rem] bg-info/10 blur-2xl" aria-hidden />
+          <div className="relative overflow-hidden rounded-3xl border bg-inverse shadow-elevated">
+            <img src={paymentIntegrationImage} alt="A smartphone, payment card and secure banking connections illustrating integrated digital payments" width={1200} height={1008} loading="lazy" className="aspect-[6/5] h-full w-full object-cover" />
+          </div>
+          <div className="absolute -bottom-5 left-4 right-4 flex items-center gap-3 rounded-2xl border bg-card/95 p-4 shadow-elevated backdrop-blur sm:left-auto sm:right-6 sm:w-[290px]">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-success-soft text-success"><CheckCircle2 className="h-5 w-5" aria-hidden /></span>
+            <div><p className="font-display text-sm font-semibold">Secure by design</p><p className="mt-0.5 text-xs text-muted-foreground">Callbacks · Reconciliation · APIs</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function FeaturedWork() {
   const q = useQuery(publicQueries.portfolios({ featured: true }));
   return (
     <div className="surface-ink">
-      <Section index="04" eyebrow="Selected work" title={<span className="text-inverse-foreground">Verified projects</span>}
+      <Section index="05" eyebrow="Selected work" title={<span className="text-inverse-foreground">Verified projects</span>}
         lead={<span className="text-inverse-muted">Only projects that have been approved for publication are shown.</span>}
         aside={<Button asChild variant="outline-inverse"><Link to="/portfolio">All work <ArrowRight /></Link></Button>}>
         {q.isPending ? <LoadingRows rows={2} /> : q.isError ? <ErrorState error={q.error} onRetry={() => q.refetch()} className="bg-inverse-subtle" /> : q.data.items.length === 0 ? (
@@ -181,7 +225,7 @@ function FeaturedWork() {
 
 function Principles() {
   return (
-    <Section index="05" eyebrow="Why PANDA TECH" title="Built on explicit, honest process">
+    <Section index="06" eyebrow="Why PANDATECHS" title="Built on explicit, honest process">
       <div className="grid gap-px border bg-border sm:grid-cols-2 lg:grid-cols-4">
         {PRINCIPLES.map((p, i) => (
           <div key={p.title} className="bg-background p-6 sm:p-8">
@@ -200,7 +244,7 @@ function ProductsAndInsights() {
   const articles = useQuery(publicQueries.articles({}));
   return (
     <div className="border-t bg-muted/50">
-      <Section index="06" eyebrow="Products" title="Software and equipment" aside={<Button asChild variant="outline"><Link to="/shop">Visit the shop <ArrowRight /></Link></Button>}>
+      <Section index="07" eyebrow="Products" title="Software and equipment" aside={<Button asChild variant="outline"><Link to="/shop">Visit the shop <ArrowRight /></Link></Button>}>
         {products.isPending ? <LoadingRows rows={2} /> : products.isError ? <ErrorState error={products.error} onRetry={() => products.refetch()} /> : products.data.items.length === 0 ? (
           <EmptyState title="No featured products yet">Products appear here once they are published in the catalogue.</EmptyState>
         ) : (
@@ -209,7 +253,7 @@ function ProductsAndInsights() {
         <div className="mt-20">
           <div className="mb-8 flex items-end justify-between gap-4">
             <div>
-              <p className="eyebrow"><span className="text-brand-strong">07 — </span>Insights</p>
+              <p className="eyebrow"><span className="text-brand-strong">08 — </span>Insights</p>
               <h2 className="mt-4 text-3xl font-semibold">Latest thinking</h2>
             </div>
             <Link to="/insights" className="text-sm font-medium hover:text-brand-strong">All insights →</Link>
@@ -232,33 +276,15 @@ function DeveloperBand() {
         <div className="grid-lines absolute inset-0 opacity-70 [mask-image:radial-gradient(ellipse_at_right,black,transparent_70%)]" aria-hidden />
         <div className="relative grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-end">
           <div>
-            <p className="eyebrow-brand">08 — Developer network</p>
+            <p className="eyebrow-brand">09 — Developer network</p>
             <h2 className="mt-4 max-w-2xl text-3xl font-semibold sm:text-5xl">Engineers who pass review, not just sign-up.</h2>
             <p className="mt-5 max-w-xl text-muted-foreground">Developers and agencies apply, are reviewed and verified, and only then join project teams. Membership is never a promise of jobs or income.</p>
           </div>
           <div className="flex flex-wrap gap-3 lg:justify-end">
             <Button asChild size="lg"><Link to="/developers">How it works <ArrowRight /></Link></Button>
+            <Button asChild variant="outline" size="lg"><Link to="/partners">Partner with us</Link></Button>
           </div>
         </div>
-      </div>
-    </Section>
-  );
-}
-
-function Testimonials() {
-  const q = useQuery(publicQueries.testimonials());
-  // Only render published testimonials. Nothing is shown when none exist — testimonials are never invented.
-  if (q.isPending || q.error || !q.data?.length) return null;
-  return (
-    <Section eyebrow="Client words" title="In their own words">
-      <div className="grid gap-6 md:grid-cols-3">
-        {q.data.slice(0, 3).map((t) => (
-          <figure key={t.id} className="flex flex-col gap-6 border-l-2 border-brand pl-6">
-            <Quote className="h-5 w-5 text-brand-strong" />
-            <blockquote className="font-display text-lg leading-snug">{t.content}</blockquote>
-            <figcaption className="mt-auto text-sm"><span className="font-medium">{t.name}</span>{(t.role || t.company) && <span className="text-muted-foreground"> · {[t.role, t.company].filter(Boolean).join(", ")}</span>}</figcaption>
-          </figure>
-        ))}
       </div>
     </Section>
   );
