@@ -5,11 +5,16 @@ import { PageHero, Section, SiteShell } from "@/components/site/SiteShell";
 import { Button } from "@/components/ui/button";
 import { CAPABILITIES } from "@/content/catalogue";
 import { pageHead } from "@/lib/seo";
+import labanPhoto from "@/assets/team/laban-panda-khisa.jpg.asset.json";
+import stevePhoto from "@/assets/team/steve-mwangi.jpg.asset.json";
+import vincentPhoto from "@/assets/team/vincent-wokabi-wanjiru.jpg.asset.json";
 
 const COFOUNDERS = [
   {
     name: "Laban Panda Khisa",
     initials: "LK",
+    photo: labanPhoto.url,
+    photoPosition: "56% 20%",
     role: "Co-Founder & Full-Stack Engineer",
     bio: "Full-stack engineering across modern frontend and backend systems, with 72 projects spanning secure bank and payment integrations, Laravel and Python backends, and polished digital experiences.",
     specialties: ["72 projects", "Bank & payment integrations", "Laravel & Python", "Frontend & backend"],
@@ -17,15 +22,19 @@ const COFOUNDERS = [
   },
   {
     name: "Steve Mwangi",
-    initials: "SW",
+    initials: "SM",
+    photo: stevePhoto.url,
+    photoPosition: "55% 15%",
     role: "Co-Founder & Full-Stack Engineer",
     bio: "End-to-end product engineering across frontend and backend development, APIs, payment integrations and scalable business systems built with Laravel, Python and modern web technologies.",
     specialties: ["Full-stack delivery", "APIs & integrations", "Laravel & Python", "Business systems"],
     icon: Network,
   },
   {
-    name: "Vincent Wanjiru",
+    name: "Vincent Wokabi Wanjiru",
     initials: "VW",
+    photo: vincentPhoto.url,
+    photoPosition: "45% 15%",
     role: "Co-Founder & Technical Specialist",
     bio: "CCTV and hands-on technical delivery, bringing together surveillance, access control, field technicians and practical infrastructure expertise for dependable on-site implementation.",
     specialties: ["CCTV & surveillance", "Access control", "Field technicians", "Technical operations"],
@@ -36,7 +45,7 @@ const COFOUNDERS = [
 export const Route = createFileRoute("/team")({
   head: () => pageHead(
     "Our Team",
-    "Meet PANDATECHS ENTERPRISES co-founders Laban Panda Khisa, Steve Mwangi and Vincent Wanjiru, and explore the team's full technology capabilities.",
+    "Meet PANDATECHS ENTERPRISES co-founders Laban Panda Khisa, Steve Mwangi and Vincent Wokabi Wanjiru, and explore the team's full technology capabilities.",
   ),
   component: TeamPage,
 });
@@ -67,16 +76,18 @@ function TeamPage() {
             const Icon = founder.icon;
             return (
               <article key={founder.name} className="group overflow-hidden rounded-2xl border bg-card shadow-soft transition-shadow hover:shadow-elevated">
-                <div className="surface-ink relative flex aspect-[5/4] items-center justify-center overflow-hidden">
-                  <div className="grid-lines-inverse absolute inset-0 opacity-70" aria-hidden />
-                  <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand/20 blur-3xl" aria-hidden />
-                  <div className="absolute -bottom-20 -left-16 h-48 w-48 rounded-full bg-info/20 blur-3xl" aria-hidden />
-                  <p className="absolute left-5 top-5 font-mono text-[10px] uppercase tracking-[0.16em] text-inverse-muted">
+                <div className="surface-ink relative aspect-[4/5] overflow-hidden">
+                  <img
+                    src={founder.photo}
+                    alt={`${founder.name}, ${founder.role} at PANDATECHS ENTERPRISES`}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    style={{ objectPosition: founder.photoPosition }}
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-inverse/80 to-transparent" aria-hidden />
+                  <p className="absolute left-5 top-5 rounded-full bg-inverse/75 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-inverse-foreground backdrop-blur-sm">
                     {String(index + 1).padStart(2, "0")} / Co-founder
                   </p>
-                  <span className="relative font-display text-8xl font-semibold tracking-[-0.08em] text-inverse-foreground sm:text-9xl lg:text-8xl xl:text-9xl" aria-hidden>
-                    {founder.initials}
-                  </span>
                   <span className="absolute bottom-5 right-5 flex h-12 w-12 items-center justify-center rounded-full bg-brand text-brand-foreground shadow-brand">
                     <Icon className="h-5 w-5" aria-hidden />
                   </span>
